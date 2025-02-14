@@ -1,0 +1,89 @@
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .plant-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .plant-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .plant-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .plant-card h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .plant-card p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .plant-card .price {
+      font-size: 1.1em;
+      color: #2c7c2c;
+      font-weight: bold;
+    }
+
+    .plant-card .rating {
+      color: #ffa500;
+      font-size: 1em;
+    }
+
+    nav {
+      width: 100%;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 30px;
+      color: black;
+      font-weight: bold;
+      color: black;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #56ab2f;
+    }
+ 
