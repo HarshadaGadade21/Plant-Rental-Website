@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #56ab2f;
+    padding: 10px 20px;
+  }
+  
+  header h2 {
+    color: #fff;
+    margin: 0;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em;
+  }
+  
+  header nav ul li a:hover {
+    color: #ffd700;
+  }
+  
+  .plant-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .plant-image {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .plant-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .plant-info {
+    flex: 1.2;
+    min-width: 300px;
+    padding: 30px;
+  }
+  
+  .plant-info h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 1.5em;
+    color: #e53935;
+    margin-bottom: 20px;
+  }
+  
+  .highlights {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .highlights li {
+    margin: 5px 0;
+  }
+  
+  .plant-specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 0.95em;
+  }
+  
+  .plant-specs th,
+  .plant-specs td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+  }
+  
+  .plant-specs th {
+    text-align: left;
+    background-color: #f8f8f8;
+    width: 40%;
+    font-weight: bold;
+  }
+  
+  .plant-specs tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  .tags {
+    margin-bottom: 20px;
+  }
+  
+  .tags span {
+    display: inline-block;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 6px 10px;
+    margin: 5px 5px 0 0;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  .actions {
+    margin-bottom: 20px;
+  }
+  
+  .actions button {
+    padding: 12px 20px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .rent-btn {
+    background-color: #28a745;
+  }
+  
+  .cart-btn {
+    background-color: #007bff;
+  }
+  
+  .delivery-check h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .pincode-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .pincode-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .check-btn {
+    background-color: #56ab2f;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .check-btn:hover {
+    background-color: #4d9d28;
+  }
+  
+  .availability-info {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .suggestions-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .suggestions-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.6em;
+  }
+  
+  .suggestions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .suggestion-card {
+    background-color: #fafafa;
+    width: 180px;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  
+  .suggestion-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  
+  .suggestion-card h4 {
+    margin: 10px 0 5px;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .sugg-price {
+    font-size: 0.95em;
+    color: #e53935;
+  }
+  
+  .sugg-rating {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    margin-top: 40px;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .plant-details-container {
+      flex-direction: column;
+      margin: 20px;
+    }
+  
+    .plant-image,
+    .plant-info {
+      flex: 1 1 100%;
+      padding: 20px;
+    }
+  
+    .suggestions-grid {
+      justify-content: center;
+    }
+  }
+  

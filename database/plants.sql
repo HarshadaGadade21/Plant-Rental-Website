@@ -6,13 +6,13 @@ drop database plant_rental;
 
 drop table Plants;
 
-CREATE TABLE Plants (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    category VARCHAR(255),
-    price DECIMAL(10, 2),
+CREATE TABLE plants (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
     rating DECIMAL(2, 1),
-    image_name varchar(255),
+    image_name VARCHAR(100) NOT NULL,
     description TEXT
 );
 
@@ -26,13 +26,13 @@ INSERT INTO Plants (name, category, price, rating, image_name, description) VALU
 ('Peace Lily', 'Indoor', 1000.00, 4.8, 'PeaceLily.webp', 'A beautiful flowering plant that purifies the air effectively.'),
 ('Rubber Plant', 'Indoor', 1300.00, 4.5, 'RubberPlant.jpg', 'A hardy plant with thick, glossy leaves that grow well indoors.'),
 ('Bamboo Palm', 'Indoor', 1700.00, 4.9, 'BambooPalm.webp', 'A tropical plant that adds a lush feel to indoor spaces.'),
-('ZZ Plant', 'Indoor', 1100.00, 4.7, 'snakeplant.jpeg', 'A low-light indoor plant with glossy, waxy leaves.'),
-('Monstera Deliciosa', 'Indoor', 1800.00, 4.9, 'snakeplant.jpeg', 'A popular plant with large, split leaves, also known as the Swiss Cheese Plant.'),
-('Jade Plant', 'Succulent', 600.00, 4.8, 'snakeplant.jpeg', 'A classic succulent with thick, oval leaves, symbolizing prosperity.'),
-('Cactus', 'Succulent', 500.00, 4.6, 'snakeplant.jpeg', 'A hardy succulent that requires minimal care and thrives in sunlight.'),
+('ZZ Plant', 'Indoor', 1100.00, 4.7, 'zz plant.jpg', 'A low-light indoor plant with glossy, waxy leaves.'),
+('Monstera Deliciosa', 'Indoor', 1800.00, 4.9, 'Monstera Deliciosa.jpg', 'A popular plant with large, split leaves, also known as the Swiss Cheese Plant.'),
+('Jade Plant', 'Succulent', 600.00, 4.8, 'Jade Plant.avif', 'A classic succulent with thick, oval leaves, symbolizing prosperity.'),
+('Cactus', 'Succulent', 500.00, 4.6, 'Cactus.webp', 'A hardy succulent that requires minimal care and thrives in sunlight.'),
 ('Croton', 'Indoor', 900.00, 4.7, 'snakeplant.jpeg', 'A colorful foliage plant with vibrant red, yellow, and green leaves.'),
-('Spider Plant', 'Indoor', 700.00, 4.8, 'snakeplant.jpeg', 'An easy-care plant with arching leaves and baby spiderettes.'),
-('Money Plant', 'Vining', 750.00, 4.9, 'snakeplant.jpeg', 'A symbol of good luck and prosperity, with heart-shaped leaves.');
+('Spider Plant', 'Indoor', 700.00, 4.8, 'croton.jpg', 'An easy-care plant with arching leaves and baby spiderettes.'),
+('Money Plant', 'Vining', 750.00, 4.9, 'Money Plant.webp', 'A symbol of good luck and prosperity, with heart-shaped leaves.');
 
 select * from Plants;
 
@@ -119,3 +119,24 @@ INSERT INTO users (username, password, email, userrole) VALUES
 ('harshada','aGFyc2hhZGExMjM=','harshadagadade21@gmail.com','admin'),
 ('shaivi','c2hhaXZpMTIz','emailhere@gmail.com','admin'),
 ('user','dXNlcjEyMw==','emailhere@gmail.com','user');
+
+CREATE TABLE user_profiles (
+    profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zip_code VARCHAR(10),
+    country VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(userid) ON DELETE CASCADE
+);
+
+INSERT INTO user_profiles (user_id, full_name, phone, address, city, state, zip_code, country)
+VALUES 
+(1, 'Harshada Gaudade', '9876543210', '123 Main Street', 'Pune', 'Maharashtra', '411001', 'India'),
+(2, 'Shaivi Sharma', '9876543211', '456 Second Street', 'Pune', 'Maharashtra', '411002', 'India'),
+(3, 'User Name', '9876543212', '789 Third Street', 'Pune', 'Maharashtra', '411003', 'India');

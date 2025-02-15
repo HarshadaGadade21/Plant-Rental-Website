@@ -17,7 +17,7 @@
     <div>
       <h1>Rent Beautiful Plants for Your Home</h1>
       <p>Explore our variety of plants available for rent. Easy and hassle-free delivery and care instructions.</p>
-      <a href="../app/plants/plants.php" class="cta-btn">Browse Plants</a>
+      <a href="../app/plants.php" class="cta-btn">Browse Plants</a>
     </div>
   </div>
 
