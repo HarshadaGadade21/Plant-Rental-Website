@@ -1,6 +1,6 @@
 <?php
 // Adjust the file path to match your project structure
-include('../../database/db.php');
+include('../database/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,30 +10,19 @@ include('../../database/db.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nurseries</title>
-  <link rel="stylesheet" href="../../resources/css/Nursery.css">
+  <link rel="stylesheet" href="../resources/css/Nursery.css">
 </head>
 
 <body>
+
+<?php include '../app/reusablelibrary/unauthenticated_header.php';?>
 
   <header>
     <h1>Our Partner Nurseries</h1>
     <p>Explore the best nurseries that supply high-quality plants for rent.</p>
   </header>
 
-  <nav>
-    <div class="logo">Plant Rental</div>
-    <ul>
-      <li><a href="../index.php">Home</a></li>
-      <li><a href="../app/plants/plants.php">Plants</a></li>
-      <li><a href="../app/nursary/nurseries.php">Nurseries</a></li>
-      <li><a href="../about.php">About Us</a></li>
-      <li><a href="contact.php">Contact Us</a></li>
-      <li><a href="login.php">Login</a></li>
-      <li><a href="signup.php">Sign Up</a></li>
-      <li><a href="../app/order/orders.php">Orders</a></li>
-    </ul>
-  </nav>
-
+ 
   <div class="nursery-list">
     <?php
     if (isset($conn)) {
@@ -44,7 +33,9 @@ include('../../database/db.php');
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 // Generate image URL or placeholder if no image exists
-                $image = !empty($row["image"]) ? $row["image"] : "../../resources/images/Nurseries/default.jpg";
+               //  $image = !empty($row["image"]) ? $row["image"] : "../resources/images/Nurseries/default.jpg";
+                $image = !empty($row["image"]) ? $row["image"] : "../resources/images/Nurseries/{$row["image_name"]}";
+     
                 echo "
                 <div class='nursery'>
                     <img src='$image' alt='Nursery'>
