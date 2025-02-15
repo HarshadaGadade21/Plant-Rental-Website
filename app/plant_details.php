@@ -3,11 +3,11 @@
 include '../database/db.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    echo "No plant selected.";
-    exit();
+  echo "No plant selected.";
+  exit();
 }
 
-$plant_id = (int) $_GET['id'];
+$plant_id = (int)$_GET['id'];
 
 $sql = "SELECT * FROM Plants WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -16,10 +16,13 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows < 1) {
-    echo "Plant not found.";
-    exit();
+  echo "Plant not found.";
+  exit();
 }
 $plant = $result->fetch_assoc();
+$stmt->close();
+
+// Build image path
 $imagePath = "../resources/images/Plants/" . htmlspecialchars($plant['image_name']);
 
 // Fetch suggestions (3 random plants, excluding current)
@@ -28,22 +31,24 @@ $suggestion_stmt = $conn->prepare($suggestion_sql);
 $suggestion_stmt->bind_param("i", $plant_id);
 $suggestion_stmt->execute();
 $suggestion_result = $suggestion_stmt->get_result();
-
-$stmt->close();
 $suggestion_stmt->close();
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?php echo htmlspecialchars($plant['name']); ?> - Details</title>
   <!-- Main Plant Details CSS -->
   <link rel="stylesheet" href="../resources/css/plant_details.css">
-  <!-- Checkout Flow CSS -->
+  <!-- (Optional) Additional CSS for checkout flow, if needed -->
   <link rel="stylesheet" href="../resources/css/checkout_flow.css">
 </head>
+
 <body>
   <!-- Header / Navigation -->
   <header>
@@ -71,7 +76,7 @@ $suggestion_stmt->close();
     <div class="plant-info">
       <h1><?php echo htmlspecialchars($plant['name']); ?></h1>
       <p class="price">Rs <?php echo number_format($plant['price'], 2); ?></p>
-      
+
       <!-- If Pink Syngonium, show detailed specs as table; else list description -->
       <?php if ($plant['name'] === 'Pink Syngonium'): ?>
         <table class="plant-specs">
@@ -132,8 +137,8 @@ $suggestion_stmt->close();
       </div>
 
       <div class="actions">
-        <!-- The Buy on Rent button will trigger the checkout modal -->
-        <button id="buyOnRentBtn" class="rent-btn">Buy on Rent</button>
+        <!-- Anchor styled as a button -->
+        <a href="checkout_payment.php?id=<?php echo $plant_id; ?>" class="rent-btn">Buy on Rent</a>
         <button class="cart-btn">Add to Cart</button>
       </div>
 
@@ -154,19 +159,19 @@ $suggestion_stmt->close();
     <div class="suggestions-grid">
       <?php
       if ($suggestion_result->num_rows > 0) {
-          while ($sugg = $suggestion_result->fetch_assoc()) {
-              $suggImage = "../resources/images/Plants/" . htmlspecialchars($sugg['image_name']);
-              echo "<div class='suggestion-card'>
-                      <a href='plant_details.php?id={$sugg["id"]}'>
-                        <img src='{$suggImage}' alt='".htmlspecialchars($sugg["name"])."' />
-                        <h4>".htmlspecialchars($sugg["name"])."</h4>
-                        <p class='sugg-price'>₹".number_format($sugg["price"], 2)."</p>
-                        <p class='sugg-rating'>⭐ {$sugg["rating"]}/5</p>
-                      </a>
-                    </div>";
-          }
+        while ($sugg = $suggestion_result->fetch_assoc()) {
+          $suggImage = "../resources/images/Plants/" . htmlspecialchars($sugg['image_name']);
+          echo "<div class='suggestion-card'>
+                  <a href='plant_details.php?id={$sugg["id"]}'>
+                    <img src='{$suggImage}' alt='" . htmlspecialchars($sugg["name"]) . "' />
+                    <h4>" . htmlspecialchars($sugg["name"]) . "</h4>
+                    <p class='sugg-price'>₹" . number_format($sugg["price"], 2) . "</p>
+                    <p class='sugg-rating'>⭐ {$sugg["rating"]}/5</p>
+                  </a>
+                </div>";
+        }
       } else {
-          echo "<p>No suggestions available.</p>";
+        echo "<p>No suggestions available.</p>";
       }
       ?>
     </div>
@@ -177,13 +182,26 @@ $suggestion_stmt->close();
     <p>&copy; 2025 Plant Rental. All rights reserved.</p>
   </footer>
 
-  <!-- Include the checkout flow modal markup -->
-  <?php include '..\app\checkout_flow_payment.php'; ?>
+  <script>
+    // Pincode Check
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const pincodeInput = document.querySelector('.pincode-form input');
+      const availabilityMsg = document.querySelector('.availability-info');
+      const pincode = pincodeInput.value.trim();
 
-  <script src="../app/checkout_flow.js"></script>
+      const punePincodes = ["411001","411002","411003","411004","411005"];
+
+      if (punePincodes.includes(pincode)) {
+        availabilityMsg.textContent = "Delivery is available for this pincode in Pune!";
+        availabilityMsg.style.color = "green";
+      } else {
+        availabilityMsg.textContent = "Sorry, delivery not available at this pincode.";
+        availabilityMsg.style.color = "red";
+      }
+    });
+  </script>
+
 </body>
 </html>
 
-<?php
-$conn->close();
-?>
+
