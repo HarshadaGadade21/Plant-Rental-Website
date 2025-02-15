@@ -103,3 +103,19 @@ CREATE TABLE Orders (
     plant_name VARCHAR(100) NOT NULL,
     quantity INT NOT NULL
 );
+
+drop table users;
+CREATE TABLE users (
+    userid INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    userrole VARCHAR(50) NOT NULL
+);
+
+SELECT * FROM users WHERE username= 'harshada' AND password= 'aGFyc2hhZGExMjM=';
+
+INSERT INTO users (username, password, email, userrole) VALUES
+('harshada','aGFyc2hhZGExMjM=','harshadagadade21@gmail.com','admin'),
+('shaivi','c2hhaXZpMTIz','emailhere@gmail.com','admin'),
+('user','dXNlcjEyMw==','emailhere@gmail.com','user');
