@@ -1,3 +1,4 @@
+
 <nav>
     <div class="logo">Plant Rental</div>
     <ul>
@@ -11,3 +12,4 @@
       <li><a href="orders.php">Orders</a></li>
     </ul>
   </nav>
+  

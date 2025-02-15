@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
         $_SESSION['userrole'] = $result["userrole"];
        
         echo "<script>
-                alert('Login Successful1234!');
+                alert('Login Successful!');
                 window.location.href='index.php';
               </script>";
         exit();

@@ -13,15 +13,16 @@ $result = $conn->query($sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plant Rental System</title>
   <link rel="stylesheet" href="..\resources\css\plants.css">
+  <link rel="stylesheet" href="../resources/css/Nursery.css">
  
 </head>
 
 <body>
 <?php include '../app/reusablelibrary/unauthenticated_header.php';?>
 
-  <h1 style="text-align:center; background-color:rgb(108, 225, 108); padding: 70px;">Plant Rental System</h1>
+  <!-- <h1 style="text-align:center; background-color:rgb(108, 225, 108); padding: 70px;">Plant Rental System</h1> -->
 
-  <div class="plant-container">
+  <div class="nursery-list">
     <?php
     if ($result->num_rows > 0) {
       // Output data of each row
