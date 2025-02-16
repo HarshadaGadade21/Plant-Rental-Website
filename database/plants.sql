@@ -93,6 +93,7 @@ CREATE TABLE contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+drop table Orders;
 CREATE TABLE Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(100) NOT NULL,
@@ -103,6 +104,26 @@ CREATE TABLE Orders (
     plant_name VARCHAR(100) NOT NULL,
     quantity INT NOT NULL
 );
+alter table Orders add product_name varchar(100) Not Null;
+
+ALTER TABLE Orders  
+DROP COLUMN plant_name;
+
+INSERT INTO Orders (customer_name, email, status, order_date, expected_delivery, plant_name, quantity)  
+VALUES  
+('harshada', 'harshada@example.com', 'Pending', '2025-02-16', '2025-02-20', 'Rose Plant', 5)
+;
+
+INSERT INTO Orders (customer_name, email, status, order_date, expected_delivery, plant_name, quantity)  
+VALUES  
+('shaivi', 'shaivi@example.com', 'delievered', '2025-02-16', '2025-02-20', 'Snake Plant', 5)
+;
+
+
+SHOW COLUMNS FROM Orders;
+
+select * from Orders;
+
 
 drop table users;
 CREATE TABLE users (

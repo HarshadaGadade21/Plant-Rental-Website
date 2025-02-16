@@ -12,6 +12,7 @@
 
 
 <?php include '../app/reusablelibrary/unauthenticated_header.php';?>
+<li><a href="my-orders.php">My-orders</a></li>
 
   <div class="hero">
     <div>
