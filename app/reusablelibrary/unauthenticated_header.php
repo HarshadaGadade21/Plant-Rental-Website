@@ -10,6 +10,10 @@
       <li><a href="login.php">Login</a></li>
       <li><a href="signup.php">Sign Up</a></li>
       <li><a href="orders.php">Orders</a></li>
+      
+  <li><a href="my-orders.php">My Orders</a></li>
+</ul>
+
     </ul>
   </nav>
   
