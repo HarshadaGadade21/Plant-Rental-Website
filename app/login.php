@@ -13,9 +13,9 @@ if (isset($_POST['login'])) {
      $ret=mysqli_fetch_array($query);
     
    
-    if ($ret>0) { // If a record is found
-        $_SESSION['username'] = $result["username"];
-        $_SESSION['userrole'] = $result["userrole"];
+    if ($ret) { // If a record is found
+        $_SESSION['username'] = $ret["username"];
+        $_SESSION['userrole'] = $ret["userrole"];
        
         echo "<script>
                 alert('Login Successful!!');
