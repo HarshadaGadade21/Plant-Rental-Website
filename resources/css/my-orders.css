@@ -1,0 +1,80 @@
+/* Remove default background */
+body {
+    background: none;
+    background-color: #ffffff;
+}
+
+nav {
+    width: 100%;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #56ab2f;
+    z-index: 1100;
+  }
+
+  nav .logo {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-left: 30px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover {
+    color: #ffd700;
+  }
+/* Table styling */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 200px;
+}
+
+.order-table th, 
+.order-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.order-table th {
+    background: #28a745;
+    color: white;
+}
+
+.order-table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+.order-table tr:hover {
+    background: #ddd;
+}
+
+footer {
+    background-color: #56ab2f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }

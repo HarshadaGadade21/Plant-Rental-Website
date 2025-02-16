@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "root";
+$password = "8767";
 $database = "plant_rental";
 
 // Create connection
